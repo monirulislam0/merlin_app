@@ -38,9 +38,10 @@ class FrontendController extends BaseController
     }
     public function productCenter(){
         $this->setPageTitle(config('settings.site_title'),'Product Center');
-        $products = Product::paginate(20);
-        $category = Category::categoryProductWithSlug('diesel-generators');
-        return view('product-center',compact('category','products'));
+        $products = Product::where('status', 1)
+            ->orderBy('id', 'desc')
+            ->paginate(21);
+        return view('product-center',compact('products'));
     }
     public function privacyPolicy()
     {
