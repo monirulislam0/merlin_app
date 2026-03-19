@@ -12,7 +12,7 @@
     <meta property="og:type" content="product">
     <meta property="fb:app_id" content="{{ config('services.facebook.app_id') }}">
     
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/logo/favicon.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/logo/favicon.png') }}">
     @stack('scripts')
     {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/'.config('settings.site_favicon')) }}"> --}}
     {{-- <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/logo/favicon.ico') }}"> --}}
