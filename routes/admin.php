@@ -121,6 +121,10 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/','App\Http\Controllers\Admin\HomePageContentController@newsBanner')->name('static.news-banner');
         Route::post('/update','App\Http\Controllers\Admin\HomePageContentController@updateNewsBanner')->name('static.news-banner.update');
     });
+    Route::group(['prefix'=> 'project-banner'],function (){
+        Route::get('/','App\Http\Controllers\Admin\HomePageContentController@projectBanner')->name('static.project-banner');
+        Route::post('/update','App\Http\Controllers\Admin\HomePageContentController@updateProjectBanner')->name('static.project-banner.update');
+    });
     Route::group(['prefix'=> 'certification-banner'],function (){
         Route::get('/','App\Http\Controllers\Admin\HomePageContentController@certificationBanner')->name('static.certification-banner');
         Route::post('/update','App\Http\Controllers\Admin\HomePageContentController@updateCertificationBanner')->name('static.certification-banner.update');

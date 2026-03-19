@@ -34,6 +34,7 @@
                         <li><a href="{{ route('admin.static.top-sidebar') }}"><i class="bx bx-cart"></i><span class="menu-item" data-i18n="Alerts">Top Sidebar</span></a>
                         <li><a href="{{ route('admin.static.sidebar-image') }}"><i class="bx bx-fingerprint"></i><span class="menu-item" data-i18n="Alerts">Sidebar Image</span></a>
                         <li><a href="{{ route('admin.static.news-banner') }}"><i class="bx bx-paragraph"></i><span class="menu-item" data-i18n="Alerts">News Banner</span></a>
+                        <li><a href="{{ route('admin.static.project-banner') }}"><i class="bx bx-image"></i><span class="menu-item" data-i18n="Alerts">Project Banner</span></a>
                         <li><a href="{{ route('admin.static.certification-banner') }}"><i class="bx bx-paperclip"></i><span class="menu-item" data-i18n="Alerts">Certification Banner</span></a>
                         <li><a href="{{ route('admin.static.footer') }}"><i class="bx bx-football"></i><span class="menu-item" data-i18n="footer">Footer</span></a>
                         </li>

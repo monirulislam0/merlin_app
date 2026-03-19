@@ -140,6 +140,22 @@ class HomePageContentController extends BaseController
         return $this->responseRedirectBack('Content updated successfully','success',false,false);
     }
 
+    public function projectBanner(){
+        $data = $this->pageRepository->findStaticByShortcode(PageShortCodeEnum::PROJECT_BANNER);
+        $this->setPageTitle('ProjectBanner','Edit : '.$data->page_title);
+        return view('admin.static.project-banner',compact('data'));
+    }
+    
+    public function updateProjectBanner(Request $request){
+        $params = $request->except('_token');
+        $page = $this->pageRepository->updateStatic($params,PageShortCodeEnum::PROJECT_BANNER);
+        if(!$page){
+            return $this->responseRedirectBack('Error occurred while updating content','error',true,true);
+        }
+        Cache::forget('project_banner_content');
+        return $this->responseRedirectBack('Content updated successfully','success',false,false);
+    }
+
     public function certificationBanner(){
         $data = $this->pageRepository->findStaticByShortcode(PageShortCodeEnum::CERTIFICATION_BANNER);
         $this->setPageTitle('Certification Banner','Edit : '.$data->page_title);

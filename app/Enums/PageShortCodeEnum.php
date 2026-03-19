@@ -12,4 +12,5 @@ enum PageShortCodeEnum:string {
     case TOP_SIDEBAR = '2006';
     case NEWS_BANNER = '2007';
     case CERTIFICATION_BANNER = '2008';
+    case PROJECT_BANNER = '2009';
 }

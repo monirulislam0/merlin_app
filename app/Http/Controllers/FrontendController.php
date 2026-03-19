@@ -86,7 +86,7 @@ class FrontendController extends BaseController
             ->paginate(12);
             
         $name = 'Our Projects';
-        $banner = (object) ['image' => 'frontend/images/News.webp']; // Use existing banner image
+        $banner = StaticPage::projectBanner(); // Use project banner from static pages
         
         return view('our-project', compact('data', 'name', 'banner'));
     }

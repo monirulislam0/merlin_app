@@ -40,6 +40,11 @@ class StaticPage extends Model
             return $query->where('shortcode',PageShortCodeEnum::NEWS_BANNER)->first();
         });
     }
+    public function scopeProjectBanner($query){
+        return Cache::remember('project_banner_content',5000,function () use($query){
+            return $query->where('shortcode',PageShortCodeEnum::PROJECT_BANNER)->first();
+        });
+    }
     public function scopeCertificationBanner($query){
         return Cache::remember('certification_banner_content',5000,function () use($query){
             return $query->where('shortcode',PageShortCodeEnum::CERTIFICATION_BANNER)->first();
