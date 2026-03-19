@@ -16,6 +16,8 @@ use App\Repositories\ProductRepository;
 use App\Repositories\ServiceRepository;
 use App\Repositories\SliderRepository;
 use App\Repositories\StaticPageRepository;
+use App\Repositories\ProjectRepository;
+use App\Contracts\ProjectContract;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -31,6 +33,7 @@ class RepositoryServiceProvider extends ServiceProvider
         ServiceContract::class => ServiceRepository::class,
         StaticPageContract::class => StaticPageRepository::class,
         NewsContract::class => NewsRepository::class,
+        ProjectContract::class => ProjectRepository::class,
     ];
 
     public function register(): void

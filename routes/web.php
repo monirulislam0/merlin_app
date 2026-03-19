@@ -21,6 +21,7 @@ Route::get('/service', [FrontendController::class, 'service'])->name('frontend.s
 Route::get('/contact', [FrontendController::class, 'contactUs'])->name('frontend.contact');
 Route::get('/news', [FrontendController::class, 'allNews'])->name('frontend.allNews');
 Route::get('/our-projects', [FrontendController::class, 'OurProjects'])->name('frontend.ourProject');
+Route::get('/project/{slug}', [FrontendController::class, 'projectDetail'])->name('frontend.project.detail');
 Route::get('/news/details/{slug}', [FrontendController::class, 'singleNews'])->name('frontend.singleNews');
 Route::get('/news/{type}', [FrontendController::class, 'news'])->name('frontend.news');
 Route::get('/news/{type}/{slug}', [FrontendController::class, 'newsDetail'])->name('frontend.news.detail');

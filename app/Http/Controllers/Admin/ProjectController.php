@@ -2,87 +2,92 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Contracts\NewsContract;
+use App\Contracts\ProjectContract;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
-class ProjectController extends BaseController
+class ProjectController extends BaseController  
 {
-    public $newsRepository;
+    public $projectRepository;
 
-    public function __construct(NewsContract $newsContract)
+    public function __construct(ProjectContract $projectContract)
     {
-        $this->newsRepository = $newsContract;
+        $this->projectRepository = $projectContract;
     }
     public function index(){
-        $news = $this->newsRepository->listNews('id','desc',['*'],15);
-        $this->setPageTitle('News','List of all News');
-        return view('admin.news.index',compact('news'));
+        $projects = $this->projectRepository->listProjects('id','desc',['*'],15);
+        $this->setPageTitle('Project','List of Projects');
+        return view('admin.projects.index',compact('projects'));
     }
 
     public function create(){
-        $this->setPageTitle('News','Create New News');
-        return view('admin.news.create');
+        $this->setPageTitle('Project','Create New Project');
+        return view('admin.projects.create');
     }
 
     public function store(Request $request){
         $this->validate($request,[
-            'title' => 'required|max:255|unique:news',
-            'news_type' => 'required',
-            'image'     => 'mimes:jpg,jpeg,png,webp|max:5000'
+            'title' => 'required|max:255|unique:projects',
+            'image' => 'mimes:jpg,jpeg,png,webp|max:5000'
         ]);
 
         $params = $request->except('_token');
 
-        $news = $this->newsRepository->createNews($params);
+        $project = $this->projectRepository->createProject($params);
 
-        if(!$news){
-            return $this->responseRedirectBack('Error occurred while creating news','error',true,true);
+        if(!$project){
+            return $this->responseRedirectBack('Error occurred while creating project','error',true,true);
         }
-        $this->removeCache($params['news_type']);
-        return $this->responseRedirect('admin.news.index','News Added Successfully','success',false,false);
+        
+        if($project->slug) {
+            $this->removeCache($project->slug);
+        }
+        
+        return $this->responseRedirect('admin.project.index','Project Added Successfully','success',false,false);
 
     }
 
     public function edit($id)
     {
-        $news = $this->newsRepository->findNewsById($id);
-        $this->setPageTitle('News','Edit News : '.$news->title);
-        return view('admin.news.edit',compact('news'));
+        $project = $this->projectRepository->findProjectById($id);
+        $this->setPageTitle('Project','Edit Project : '.$project->title);
+        return view('admin.projects.edit',compact('project'));
     }
 
     public function update(Request $request){
 
         $this->validate($request,[
-            'title' => 'required|max:255',
-            'news_type' => 'required',
-            'image'     => 'mimes:jpg,jpeg,png,webp|max:5000'
+            'title' => 'required|max:255|unique:projects,title,'.$request->id,
+            'image' => 'mimes:jpg,jpeg,png,webp|max:5000'
         ]);
 
         $params = $request->except('_token');
-        $news = $this->newsRepository->updateNews($params);
+        $project = $this->projectRepository->updateProject($params);
 
-        if(!$news){
-            return $this->responseRedirectBack('Error occurred while updating news','error',true,true);
+        if(!$project){
+            return $this->responseRedirectBack('Error occurred while updating project','error',true,true);
         }
-        $slug = $this->newsRepository->findNewsById($params['id']);
-        $this->removeCache($params['news_type'],$slug->slug);
-        return $this->responseRedirectBack('News updated successfully','success',false,false);
+        $slug = $this->projectRepository->findProjectById($params['id']);
+        $this->removeCache($slug->slug);
+        return $this->responseRedirectBack('Project updated successfully','success',false,false);
     }
 
     public function delete($id){
-        $news = $this->newsRepository->deleteNews($id);
-        if(!$news){
-            return $this->responseRedirectBack('Error occurred while deleting news','error',true,true);
+        $project = $this->projectRepository->deleteProject($id);
+        if(!$project){
+            return $this->responseRedirectBack('Error occurred while deleting project','error',true,true);
         }
-        $this->removeCache($news->news_type,$news->slug);
-        return $this->responseRedirect('admin.news.index','News deleted Successfully','success',false,false);
+        
+        if($project->slug) {
+            $this->removeCache($project->slug);
+        }
+        
+        return $this->responseRedirect('admin.project.index','Project deleted Successfully','success',false,false);
     }
 
-    protected function removeCache($type=null,$slug=null){
-        Cache::forget('news_'.$type);
-        Cache::forget('news_'.$slug);
+    protected function removeCache($slug=null){
+        Cache::forget('project_'.$slug);
     }
 }

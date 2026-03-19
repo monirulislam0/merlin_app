@@ -48,6 +48,8 @@
                 <li class=" nav-item"><a href="{{ route('admin.products.index') }}"><i class="bx bx-check-square"></i><span class="menu-title" data-i18n="menu">Products</span></a>
                 </li>
                 <li class=" nav-item"><a href="{{ route('admin.news.index') }}"><i class="bx bx-film"></i><span class="menu-title" data-i18n="news">News</span></a>
+                </li> 
+                 <li class=" nav-item"><a href="{{ route('admin.project.index') }}"><i class="bx bx-film"></i><span class="menu-title" data-i18n="project">Our Projects</span></a>
                 </li>
                 <li class=" nav-item"><a href="{{ route('admin.contact-message') }}"><i class="bx bx-mail-send"></i><span class="menu-title" data-i18n="subscription">Contact Message</span></a>
                 </li>

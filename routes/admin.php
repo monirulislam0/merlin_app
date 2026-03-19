@@ -58,7 +58,7 @@ Route::middleware(['auth:admin'])->group(function () {
 
     });
 
-    Route::group(['prefix'=> 'area'],function (){
+    /*Route::group(['prefix'=> 'area'],function (){
         Route::get('/','App\Http\Controllers\Admin\AreaController@index')->name('areas.index');
         Route::get('/create','App\Http\Controllers\Admin\AreaController@create')->name('areas.create');
         Route::post('/store','App\Http\Controllers\Admin\AreaController@store')->name('areas.store');
@@ -66,7 +66,7 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('update','App\Http\Controllers\Admin\AreaController@update')->name('areas.update');
         Route::get('/{id}/delete','App\Http\Controllers\Admin\AreaController@delete')->name('areas.delete');
 
-    });
+    });*/
     Route::group(['prefix'=> 'services'],function (){
         Route::get('/','App\Http\Controllers\Admin\ServiceController@index')->name('services.index');
         Route::get('/create','App\Http\Controllers\Admin\ServiceController@create')->name('services.create');

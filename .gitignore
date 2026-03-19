@@ -19,3 +19,8 @@ yarn-error.log
 /.vscode
 /public/php.ini
 /public/symbolic.php
+/storage/framework
+/storage/sessions
+/storage/debugbar
+/storage/purifier
+/public/storage

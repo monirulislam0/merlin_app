@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\News;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Project;
 use App\Models\StaticPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -76,12 +77,26 @@ class FrontendController extends BaseController
     }
 
     public function OurProjects(){
-
-        $data = [];
-        $name = 'Our Project';
-        $banner = [];
+        $this->setPageTitle(config('settings.site_title'), 'Our Projects');
+        
+        // Fetch active projects with pagination
+        $data = Project::where('status', 1)
+            ->orderBy('sorting', 'asc')
+            ->orderBy('id', 'desc')
+            ->paginate(12);
+            
+        $name = 'Our Projects';
+        $banner = (object) ['image' => 'frontend/images/News.webp']; // Use existing banner image
+        
         return view('our-project', compact('data', 'name', 'banner'));
+    }
 
+    public function projectDetail($slug){
+        $data = Project::where('slug', $slug)->where('status', 1)->firstOrFail();
+        
+        $this->setPageTitle(config('settings.site_title'), $data->title);
+        
+        return view('project-detail', compact('data'));
     }
 
     public function singleNews($slug) {
