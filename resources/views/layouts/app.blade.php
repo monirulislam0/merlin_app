@@ -12,8 +12,12 @@
     <meta property="og:type" content="product">
     <meta property="fb:app_id" content="{{ config('services.facebook.app_id') }}">
     
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/logo/favicon.png') }}">
     @stack('scripts')
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/'.config('settings.site_favicon')) }}">
+    {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/'.config('settings.site_favicon')) }}"> --}}
+    {{-- <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/logo/favicon.ico') }}"> --}}
+
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/39a0ca5659.js" crossorigin="anonymous"></script>
