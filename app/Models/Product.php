@@ -25,7 +25,10 @@ class Product extends Model
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;
-        $this->attributes['slug'] = Str::slug($value);
+        // Only auto-generate slug if it's not already set
+        if (!isset($this->attributes['slug']) || $this->attributes['slug'] === '') {
+            $this->attributes['slug'] = Str::slug($value);
+        }
     }
 
     public function categories(){

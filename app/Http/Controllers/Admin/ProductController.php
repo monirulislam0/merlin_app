@@ -45,6 +45,7 @@ class ProductController extends BaseController
     {
         $this->validate($request, [
             'name' => 'required|unique:products|max:191',
+            'slug' => 'nullable|unique:products,slug|max:255|regex:/^[a-z0-9-]+$/',
             'price' => 'nullable|numeric',
             'discount' => 'nullable|numeric',
             'unit' => 'nullable|string|max:50',
@@ -79,6 +80,7 @@ class ProductController extends BaseController
     {
         $this->validate($request, [
             'name' => 'required|max:191',
+            'slug' => 'nullable|unique:products,slug,'.$request->id.'|max:255|regex:/^[a-z0-9-]+$/',
             'price' => 'nullable|numeric',
             'discount' => 'nullable|numeric',
             'unit' => 'nullable|string|max:50',

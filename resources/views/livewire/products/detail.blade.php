@@ -5,7 +5,7 @@ $ogImage = isset($product['images'][0]['image_link'])
 @endphp
 
 @section('og_title', $product['name'] ?? 'Product')
-@section('og_description', Str::limit(strip_tags($product['description'] ?? ''), 200))
+@section('og_description', Str::limit(strip_tags($product['meta_description'] ?? ''), 200))
 @section('og_image', $ogImage)
 
 @push('scripts')
@@ -24,7 +24,11 @@ window.addEventListener('setOpenGraphTags', event => {
         <div class="row">
             <div class="col-md-6 d-flex flex-column">
                 <div class="productImage">
-                    <img id="expandedImg"  src="{{ asset('storage/'.$images[0]['image_link']) }}" alt="..." class="img-fluid border expandedImg">
+                    @if(!empty($images) && isset($images[0]))
+                        <img id="expandedImg"  src="{{ asset('storage/'.$images[0]['image_link']) }}" alt="..." class="img-fluid border expandedImg">
+                    @else
+                        <img id="expandedImg"  src="{{ asset('storage/'.$product['image']) }}" alt="..." class="img-fluid border expandedImg">
+                    @endif
                     <div id="myresult" class="img-zoom-result"></div>
                 </div>
                 <div class="row p-3 d-flex justify-content-center">

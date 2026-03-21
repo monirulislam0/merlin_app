@@ -6,11 +6,28 @@
                 <input type="text" id="name"
                        class="form-control @error('name') is-invalid @enderror"
                        name="name" value="{{ old('name',(isset($product->name)) ? $product->name: '' )}}"
-                       placeholder="Enter product name">
+                       placeholder="Enter product name" onkeyup="generateSlug(this.value)">
                 @if(isset($product->id))
                     <input type="hidden" name="id" value="{{ $product->id }}">
                 @endif
                 @error('name')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="slug">Slug</label>
+                <input type="text" id="slug"
+                       class="form-control @error('slug') is-invalid @enderror"
+                       name="slug" value="{{ old('slug',(isset($product->slug)) ? $product->slug: '' )}}"
+                       placeholder="Auto-generated from name (can be modified)">
+                <small class="form-text text-muted">Slug will be auto-generated from the product name. You can modify it if needed.</small>
+                @if(isset($product->id))
+                    <input type="hidden" name="id" value="{{ $product->id }}">
+                @endif
+                @error('slug')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
@@ -216,9 +233,12 @@
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </fieldset>
-            @if(isset($product->pdf_file))
-                <iframe src="{{ asset('storage/'.$product->pdf_file) }}" width="100" height="100"
-                        style="border:1px solid #666;"></iframe>
+            @if(isset($product->pdf_file) && !empty($product->pdf_file))
+                <div class="mt-2">
+                    <small class="text-muted">Current PDF:</small><br>
+                    <iframe src="{{ asset('storage/'.$product->pdf_file) }}" width="100" height="100"
+                            style="border:1px solid #666;"></iframe>
+                </div>
             @endif
         </div>
         <div class="col-12">
@@ -280,3 +300,33 @@
         </div>
     </div>
 </div>
+
+<script>
+function generateSlug(name) {
+    // Only generate slug if the slug field is empty or hasn't been manually modified
+    const slugField = document.getElementById('slug');
+    const originalSlug = slugField.dataset.original || slugField.value;
+    
+    // Store original value on first load
+    if (!slugField.dataset.original) {
+        slugField.dataset.original = slugField.value;
+    }
+    
+    // Only auto-generate if slug hasn't been manually modified
+    if (slugField.value === '' || slugField.value === slugField.dataset.original) {
+        let slug = name.toLowerCase()
+            .replace(/[^\w\s-]/g, '') // Remove special characters
+            .replace(/\s+/g, '-') // Replace spaces with hyphens
+            .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+            .trim(); // Remove leading/trailing spaces and hyphens
+        
+        slugField.value = slug;
+        slugField.dataset.original = slug;
+    }
+}
+
+// Prevent auto-generation when user manually modifies slug
+document.getElementById('slug').addEventListener('input', function() {
+    this.dataset.original = this.value;
+});
+</script>
