@@ -11,6 +11,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/logout',            [AdminController::class, 'AdminLogout'])->name('logout');
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::get('contact-message',[DashboardController::class,'contactMessage'])->name('contact-message');
+    Route::delete('contact-message/{id}',[DashboardController::class,'deleteContactMessage'])->name('contact-message-delete');
     Route::get('/settings',[SettingController::class,'index'])->name('setting');
     Route::group(['prefix'=> 'categories'],function (){
         Route::get('/','App\Http\Controllers\CategoryController@index')->name('categories.index');
