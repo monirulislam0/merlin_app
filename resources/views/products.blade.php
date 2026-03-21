@@ -5,6 +5,9 @@
 
     @section('og_description'){{ $category->meta_description }}@endsection
 
+    @section('meta_description'){{ $category->meta_description }}@endsection
+    @section('meta_title'){{ $category->meta_title }}@endsection
+
     <main>
         <div class="py-5 container innerpage-container">
             <livewire:products.breadcrumb :category_name="$category->name"></livewire:products.breadcrumb>

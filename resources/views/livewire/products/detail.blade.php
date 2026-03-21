@@ -8,6 +8,10 @@ $ogImage = isset($product['images'][0]['image_link'])
 @section('og_description', Str::limit(strip_tags($product['meta_description'] ?? ''), 200))
 @section('og_image', $ogImage)
 
+@section('meta_description', $product['meta_description'] ?? '')
+@section('meta_keywords', $product['meta_keywords'] ?? '')
+@section('meta_title', $product['meta_title'] ?? '')
+
 @push('scripts')
 <script>
 window.addEventListener('setOpenGraphTags', event => {
