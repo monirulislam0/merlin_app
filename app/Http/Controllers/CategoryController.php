@@ -42,7 +42,9 @@ class CategoryController extends BaseController
             'name' => 'required|max:191|unique:categories',
             'sorting' => 'required|numeric',
             'image'     => 'mimes:jpg,jpeg,png,webp|max:5000',
-            'hover_image'     => 'mimes:jpg,jpeg,png,webp|max:5000'
+            'hover_image'     => 'mimes:jpg,jpeg,png,webp|max:5000',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string|max:500'
         ]);
 
         $params = $request->except('_token');
@@ -76,7 +78,9 @@ class CategoryController extends BaseController
             'name' => 'required|max:191',
             'sorting' => 'required|numeric',
             'image'     => 'mimes:jpg,jpeg,png,webp|max:5000',
-            'hover_image'     => 'mimes:jpg,jpeg,png,webp|max:5000'
+            'hover_image'     => 'mimes:jpg,jpeg,png,webp|max:5000',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string|max:500'
         ]);
 
         $params = $request->except('_token');

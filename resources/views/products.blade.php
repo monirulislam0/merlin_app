@@ -1,4 +1,10 @@
 <x-app-layout>
+    
+
+    @section('og_title'){{ $category->meta_title }}@endsection
+
+    @section('og_description'){{ $category->meta_description }}@endsection
+
     <main>
         <div class="py-5 container innerpage-container">
             <livewire:products.breadcrumb :category_name="$category->name"></livewire:products.breadcrumb>

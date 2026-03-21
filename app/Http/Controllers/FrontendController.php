@@ -40,7 +40,7 @@ class FrontendController extends BaseController
         $this->setPageTitle(config('settings.site_title'),'Product Center');
         $products = Product::where('status', 1)
             ->orderBy('id', 'desc')
-            ->paginate(21);
+            ->paginate(50);
         return view('product-center',compact('products'));
     }
     public function privacyPolicy()

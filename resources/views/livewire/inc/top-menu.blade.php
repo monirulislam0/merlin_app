@@ -59,7 +59,7 @@
                                         <i class="fa-solid fa-caret-down fs-4 fa-caret-down-navbar" style="color: #fff;"></i>
                                     </button>
                                 </div>
-                                <div class="submenu navbar-nav" id="navbarNavSubAbout">
+                                {{-- <div class="submenu navbar-nav" id="navbarNavSubAbout">
                                     <ul>
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{ route('frontend.about') }}">Company Profile</a>
@@ -71,11 +71,11 @@
                                             <a class="nav-link " href="{{ route('frontend.news','certification') }}">Certification</a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> --}}
                             </li>
-                            <li class="nav-item main-nav">
+                            {{-- <li class="nav-item main-nav">
                                 <a class="nav-link nav-link-names" href="{{ route('frontend.service') }}">Download</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item main-nav">
                                 
                                  <div class="d-flex justify-content-between h-md-100">
