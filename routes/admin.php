@@ -9,6 +9,8 @@ Route::middleware(['guest:admin'])->group(function () {
 });
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/logout',            [AdminController::class, 'AdminLogout'])->name('logout');
+    Route::get('change-password',[AdminController::class,'showChangePasswordForm'])->name('password.change');
+    Route::post('change-password',[AdminController::class,'changePassword'])->name('password.update');
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::get('contact-message',[DashboardController::class,'contactMessage'])->name('contact-message');
     Route::delete('contact-message/{id}',[DashboardController::class,'deleteContactMessage'])->name('contact-message-delete');

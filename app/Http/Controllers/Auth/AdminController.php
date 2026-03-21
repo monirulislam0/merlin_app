@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Vonage\Message\Shortcode\Alert;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Artisan;
 
@@ -36,5 +37,31 @@ class AdminController extends Controller
     {
         Auth::guard('admin')->logout();
         return redirect(route('admin.login.form'));
+    }
+
+    public function showChangePasswordForm()
+    {
+        return view('auth.admin.change-password');
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $admin = Auth::guard('admin')->user();
+
+        // Check if current password matches
+        if (!Hash::check($request->current_password, $admin->password)) {
+            return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+        }
+
+        // Update password
+        $admin->password = Hash::make($request->new_password);
+        $admin->save();
+
+        return redirect()->route('admin.dashboard')->with('success', ['Password changed successfully!']);
     }
 }
