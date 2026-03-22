@@ -29,6 +29,12 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item"><a href="#"><i class="bx bx-file"></i><span class="menu-title" data-i18n="Components">Service Page</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('admin.service-page.edit') }}"><i class="bx bx-edit"></i><span class="menu-item" data-i18n="Alerts">Service Content</span></a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item"><a href="#"><i class="bx bx-info-circle"></i><span class="menu-title" data-i18n="Components">Static</span></a>
                     <ul class="menu-content">
                         <li><a href="{{ route('admin.static.top-sidebar') }}"><i class="bx bx-cart"></i><span class="menu-item" data-i18n="Alerts">Top Sidebar</span></a>

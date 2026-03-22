@@ -18,6 +18,7 @@ Route::get('/', [FrontendController::class, 'home'])->name('frontend.home');
 Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('frontend.about');
 Route::get('/certification', [FrontendController::class, 'certification'])->name('frontend.certification');
 Route::get('/service', [FrontendController::class, 'service'])->name('frontend.service');
+Route::get('/service-page', [FrontendController::class, 'servicePage'])->name('frontend.service.page');
 Route::get('/contact', [FrontendController::class, 'contactUs'])->name('frontend.contact');
 Route::get('/news', [FrontendController::class, 'allNews'])->name('frontend.allNews');
 Route::get('/our-projects', [FrontendController::class, 'OurProjects'])->name('frontend.ourProject');

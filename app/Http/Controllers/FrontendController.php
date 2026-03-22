@@ -63,6 +63,12 @@ class FrontendController extends BaseController
         $this->setPageTitle(config('settings.site_title'),'Services');
         return view('service');
     }
+
+    public function servicePage(){
+        $servicePage = \App\Models\ServicePage::serviceContent();
+        $this->setPageTitle(config('settings.site_title'), $servicePage->page_title ?? 'Service Page');
+        return view('service-page', compact('servicePage'));
+    }
     public function contactUs(){
         $this->setPageTitle(config('settings.site_title'),'Contact Us');
         return view('contact');
@@ -70,7 +76,7 @@ class FrontendController extends BaseController
 
     public function allNews(){
          $banner = StaticPage::newsBanner();
-        $data =  News::paginate(10);
+        $data =  News::where('news_type', '!=', 5)->paginate(10);
         $this->setPageTitle(config('settings.site_title'),'News');
         $name = 'All News';
         return view('all-news',compact('data','name','banner'));

@@ -61,12 +61,7 @@
                                 </div>
                                 <div class="submenu navbar-nav" id="navbarNavSubAbout">
                                     <ul>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo e(route('frontend.about')); ?>">Company Profile</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " href="<?php echo e(route('frontend.news','industry-news')); ?>">Service</a>
-                                        </li>
+                                        
                                         <li class="nav-item">
                                             <a class="nav-link " href="<?php echo e(route('frontend.news','certification')); ?>">Certification</a>
                                         </li>
@@ -74,8 +69,9 @@
                                 </div>
                             </li>
                             <li class="nav-item main-nav">
-                                <a class="nav-link nav-link-names" href="<?php echo e(route('frontend.service')); ?>">Download</a>
+                                <a class="nav-link nav-link-names" href="<?php echo e(route('frontend.service.page')); ?>">Services</a>
                             </li>
+                            
                             <li class="nav-item main-nav">
                                 
                                  <div class="d-flex justify-content-between h-md-100">

@@ -7,6 +7,7 @@ use App\Contracts\CategoryContract;
 use App\Contracts\NewsContract;
 use App\Contracts\ProductContract;
 use App\Contracts\ServiceContract;
+use App\Contracts\ServicePageContract;
 use App\Contracts\SliderContract;
 use App\Contracts\StaticPageContract;
 use App\Repositories\AreaRepository;
@@ -14,6 +15,7 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\NewsRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\ServiceRepository;
+use App\Repositories\ServicePageRepository;
 use App\Repositories\SliderRepository;
 use App\Repositories\StaticPageRepository;
 use App\Repositories\ProjectRepository;
@@ -31,6 +33,7 @@ class RepositoryServiceProvider extends ServiceProvider
         ProductContract::class => ProductRepository::class,
         SliderContract::class  => SliderRepository::class,
         ServiceContract::class => ServiceRepository::class,
+        ServicePageContract::class => ServicePageRepository::class,
         StaticPageContract::class => StaticPageRepository::class,
         NewsContract::class => NewsRepository::class,
         ProjectContract::class => ProjectRepository::class,
