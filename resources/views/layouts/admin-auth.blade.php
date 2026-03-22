@@ -11,8 +11,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="Ismail Hossen">
     <title>{{ config('app.name') . '|' . 'Login' }}</title>
-    <link rel="apple-touch-icon" href="{{ asset('assets/images/ico/apple-icon-120.png')  }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/ico/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.png')  }}">
+
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->

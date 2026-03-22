@@ -11,8 +11,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="Ismail Hossen">
     <title>@yield('title')</title>
-    <link rel="apple-touch-icon" href="{{ asset('assets/images/ico/apple-icon-120.png')  }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/ico/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.png')  }}">
+
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+
+
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/css/vendors.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-extended.css') }}">

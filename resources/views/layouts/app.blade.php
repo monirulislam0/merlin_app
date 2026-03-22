@@ -37,7 +37,9 @@
 
     
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/logo/favicon.png') }}">
+<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+<link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 
     @stack('scripts')
 

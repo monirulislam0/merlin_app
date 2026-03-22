@@ -95,9 +95,7 @@
                             <li class="nav-item main-nav">
                                 <a class="nav-link nav-link-names" href="<?php echo e(route('frontend.ourProject')); ?>">Our Projects</a>
                             </li>
-                            <li class="nav-item main-nav">
-                                <a class="nav-link nav-link-names" href="#">FAQs</a>
-                            </li>
+                            
                             <li class="nav-item main-nav">
                                 <a class="nav-link nav-link-names" href="<?php echo e(route('frontend.contact')); ?>">Contact Us</a>
                             </li>
