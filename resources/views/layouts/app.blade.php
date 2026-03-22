@@ -12,7 +12,7 @@
 
     <x-meta />
 
-    <meta property="og:title" content="@yield('og_title', 'Merlin Tech LTD.')">
+    <meta property="og:title" content="@yield('og_title', 'Merlin Tech LTD.')" >
 
     <meta property="og:description" content="@yield('og_description', '')">
 
