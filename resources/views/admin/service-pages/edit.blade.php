@@ -45,7 +45,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="content">Content</label>
-                                                <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="10">{{ old('content', $servicePage->content) }}</textarea>
+                                                <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="description" rows="10">{{ old('content', $servicePage->content) }}</textarea>
                                                 @error('content')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
