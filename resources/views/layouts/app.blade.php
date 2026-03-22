@@ -19,9 +19,7 @@
     <meta property="og:image" content="@yield('og_image', '')">
 
 
-    <meta name="description" content="@yield('meta_description', '')">
-    <meta name="keywords" content="@yield('meta_keywords', '')">
-    <meta name="title" content="@yield('meta_title', '')">
+
 
 
 
