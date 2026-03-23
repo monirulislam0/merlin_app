@@ -1,4 +1,4 @@
-<title><?php echo e($pageTitle  .' | '.$pageSubTitle); ?></title>
+<title><?php echo e($pageSubTitle); ?></title>
 <?php if(isset($imageLink)): ?>
 <meta property="og:image" content="<?php echo e($imageLink); ?>">
 <?php endif; ?>
