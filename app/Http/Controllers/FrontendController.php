@@ -76,7 +76,7 @@ class FrontendController extends BaseController
 
     public function allNews(){
          $banner = StaticPage::newsBanner();
-        $data =  News::where('news_type', '!=', 5)->paginate(10);
+        $data =  News::where('news_type', '!=', 5)->orderBy('id', 'desc')->paginate(10);
         $this->setPageTitle(config('settings.site_title'),'News');
         $name = 'All News';
         return view('all-news',compact('data','name','banner'));

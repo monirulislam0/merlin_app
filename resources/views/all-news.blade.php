@@ -37,6 +37,9 @@
                 </div>
                 @endforeach
             </div>
+            <div class="mt-4">
+                {{ $data->links('vendor.pagination.bootstrap-5') }}
+            </div>
         </div>
     </main>
 </x-app-layout>
