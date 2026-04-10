@@ -17,15 +17,12 @@
                             <table class="table table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th width="3%">Sl</th>
-                                    <th width="10%">Name</th>
-                                    <th width="10%">Mobile</th>
-                                    <th width="12%">Email</th>
-                                    <th width="8%">Country</th>
-                                    <th width="10%">Company</th>
-                                    <th width="30%">Message</th>
-                                    <th width="10%">Product</th>
-                                    <th width="7%">Action</th>
+                                    <th width="5%">Sl</th>
+                                    <th width="12%">Name</th>
+                                    <th width="12%">Mobile</th>
+                                    <th width="18%">Email</th>
+                                    <th width="38%">Message</th>
+                                    <th width="15%">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -36,16 +33,11 @@
                                         <td>{{ $message->name }}</td>
                                         <td>{{ $message->mobile }}</td>
                                         <td>{{ $message->email }}</td>
-                                        <td>{{ $message->country_name }}</td>
-                                        <td>{{ $message->company_name }}</td>
-                                        <td class="text-wrap" style="max-width: 250px; max-height: 100px; overflow-y: auto; word-wrap: break-word;">{{ $message->message }}</td>
+                                        <td class="text-wrap" style="max-width: 300px; word-wrap: break-word;">{{ Str::limit($message->message, 100) }}</td>
                                         <td>
-                                            @php $sl=0 @endphp
-                                            @foreach($message->products as $product)
-                                              {{ ++$sl .':'.$product->name }}
-                                            @endforeach
-                                        </td>
-                                        <td>
+                                            <a href="{{ route('admin.contact-message-view', $message->id) }}" class="btn btn-primary btn-sm" style="margin:2px;">
+                                                <i class="fa fa-eye"></i> View
+                                            </a>
                                             <form action="{{ route('admin.contact-message-delete', $message->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this message?')" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')

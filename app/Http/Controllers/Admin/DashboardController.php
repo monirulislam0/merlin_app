@@ -30,6 +30,11 @@ class DashboardController extends Controller
         return view('admin.contact-message',compact('messages'));
     }
 
+    public function viewContactMessage($id){
+        $message = ContactMessage::with('products:id,name')->findOrFail($id);
+        return view('admin.contact-message-details', compact('message'));
+    }
+
     public function deleteContactMessage($id){
         $message = ContactMessage::findOrFail($id);
         $message->delete();

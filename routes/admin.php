@@ -14,6 +14,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('change-password',[AdminController::class,'changePassword'])->name('password.update');
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::get('contact-message',[DashboardController::class,'contactMessage'])->name('contact-message');
+    Route::get('contact-message/{id}',[DashboardController::class,'viewContactMessage'])->name('contact-message-view');
     Route::delete('contact-message/{id}',[DashboardController::class,'deleteContactMessage'])->name('contact-message-delete');
     Route::get('/settings',[SettingController::class,'index'])->name('setting');
     Route::group(['prefix'=> 'service-page'],function (){
